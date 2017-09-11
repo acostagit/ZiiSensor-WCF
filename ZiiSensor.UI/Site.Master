@@ -1,0 +1,159 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ZiiSensor.UI.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="Content/menu-dashboard.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">ZiiSolution</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Home.aspx"></a></li>
+                        <li><a runat="server" href="~/QuemSomos.aspx"></a></li>
+                        <li><a runat="server" href="~/Contato.aspx"></a></li>
+                        <li><a runat="server" href="~/RedeSocial.aspx">Facebook</a></li>
+                        <li><a runat="server" href="http://www.Twitter.com/ziisolution">Twitter</a></li>
+                        <li><a runat="server" href="http://www.ziisolution.com.br">Institucional</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <hr />
+
+
+
+        <div class="container body-content pull-left">
+            <div class="nav-side-menu">
+                <div class="brand">ZiiSolution (c)</div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+                <div class="menu-list">
+
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li>
+                            <a href="/Dashboard.aspx">
+                                <i class="fa fa-dashboard fa-lg"></i>Dashboard</a>
+                        </li>
+
+                        <li data-toggle="collapse" data-target="#cliente" class="collapsed active">
+                            <a href="#"><i class="fa fa-pencil-square-o"></i>Cliente<span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="cliente">
+                            <li class="active"><a href="/Cliente/Incluir.aspx">Incluir</a></li>
+                            <li><a href="/Cliente/teste.aspx">Teste</a></li>
+                            <li><a href="/Cliente/Consultar.aspx">Consultar</a></li>
+                        </ul>
+
+                        <%-- <li data-toggle="collapse" data-target="#temperatura" class="collapsed">
+                            <a href="#"><i class="fa fa-globe fa-lg"></i>Temperatura <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="temperatura">
+                            <li class="active"><a href="#">Gráfico</a></li>
+                            <li>Cadastrar</li>
+                            <li>Relatório</li>
+                        </ul>--%>
+
+                        <li>
+                            <a href="#demo3" class="collapsed" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-globe fa-lg"></i>Temperatura<i class="fa fa-caret-down"></i></a>
+                            <div class="collapse" style="margin-left: 20px;" id="demo3">
+                                <a href="#SubMenu1" class="collapsed" data-toggle="collapse" data-parent="#SubMenu1"><i class="fa fa-line-chart"></i>Gráfico<i class="fa fa-caret-down"></i></a>
+                                <div class="collapse" id="SubMenu1">
+                                    <a href="/Temperatura/Diario.aspx" class="list-group-item collapse" style="background-color: #454343; height: 40px; vertical-align: top; border: none; border-bottom: solid; border-bottom-color: #000000;" data-parent="#SubMenu1">Diário</a>
+                                    <a href="/Temperatura/Semanal.aspx" class="list-group-item collapse" style="background-color: #454343; height: 40px; vertical-align: top; border: none; border-bottom: solid; border-bottom-color: #000000;" data-parent="#SubMenu1">Semanal</a>
+                                    <a href="#" class="list-group-item collapse" style="background-color: #444141; height: 40px; vertical-align: top; border: none; border-bottom-color: #000000;" data-parent="#SubMenu1">Mensal</a>
+                                    <%--<a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3 c <i class="fa fa-caret-down"></i></a>--%>
+                                    <%--<div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
+                                        <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
+                                        <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
+                                    </div>--%>
+                                    <%--<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>--%>
+                                    <div class="collapse" style="margin-left: 20px;" id="demo4">
+                                        <a href="#SubMenu2" class="collapsed" data-toggle="collapse" data-parent="#SubMenu2"><i class="fa fa-line-chart"></i>Relatório<i class="fa fa-caret-down"></i></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li data-toggle="collapse" data-target="#perfil" class="collapsed">
+                            <a href="#"><i class="fa fa-asterisk"></i>Perfil <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="perfil">
+                            <li>Novo</li>
+                            <li>Consultar</li>
+                        </ul>
+
+
+                        <li data-toggle="collapse" data-target="#usuario" class="collapsed">
+                            <a href="#"><i class="fa fa-user"></i>Usuário <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="usuario">
+                            <li>Novo</li>
+                            <li>Consultar</li>
+                        </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>&copy; ZiiSolution - Soluções inteligentes</p>
+            <span><%: DateTime.Now.Year %>  - São Bernardo do Campo/SP</span>
+        </footer>
+
+    </form>
+</body>
+</html>
